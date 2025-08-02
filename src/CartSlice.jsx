@@ -9,7 +9,7 @@ export const CartSlice = createSlice({
     addItem: (state, action) => {
         const existingPlant = state.items.find(({ name }) => name === action.payload.name);
 
-        if (existingPlant?.quantity) existingPlant.quantity++;
+        if (existingPlant) existingPlant.quantity++;
         else state.items.push({...action.payload, quantity: 1});
     },
     removeItem: (state, action) => {
@@ -19,7 +19,7 @@ export const CartSlice = createSlice({
         const { quantity } = action.payload;
         const existingPlant = state.items.find(({ name }) => name === action.payload.name);
 
-        if (existingPlant?.quantity) existingPlant.quantity = quantity;
+        if (existingPlant) existingPlant.quantity = quantity;
     },
   },
 });
